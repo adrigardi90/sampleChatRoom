@@ -1,0 +1,39 @@
+
+<main-card
+  title="Upload your profile image"
+  subtitle="Select image"
+  [loading]="loading">
+
+ <div body>
+    <figure>
+      <img #inputImage
+        [src]="base64textString != '' ? base64textString : imgSrc">
+       <figcaption 
+          class="pointer"
+          (click)="uploadImg()">Pulsa para cambiar imagen.</figcaption>
+    </figure>
+
+    <input type="file"
+        id="myFile" 
+        name="myFile"
+        [hidden]="true"
+        (change)="onFileChange($event)"
+        accept="image/*"
+        #inputfile />
+
+  </div>
+
+
+  <button 
+        md-raised-button 
+        class="button-login"
+        (click)='login()'
+        action>ENTER</button>
+
+</main-card>
+
+
+
+
+
+

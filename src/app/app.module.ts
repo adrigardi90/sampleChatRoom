@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import * as VIEWs from '../views';
 import * as SERVICEs from '../services';
+import { MainCardComponent } from '../components/mainCard.component';
 
 const ROUTES = [
 
@@ -20,6 +21,10 @@ const ROUTES = [
   {
     path: 'login',
     component: VIEWs.LoginComponent
+  },
+  {
+    path: 'upload',
+    component: VIEWs.UploadImageComponent
   },
   {
     path: 'mainRoom',
@@ -36,7 +41,9 @@ const ROUTES = [
   declarations: [
     AppComponent,
     VIEWs.LoginComponent,
-    VIEWs.MainComponent
+    VIEWs.MainComponent,
+    VIEWs.UploadImageComponent,
+    MainCardComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +55,8 @@ const ROUTES = [
   ],
   providers: [
     SERVICEs.SocketConnectionService,
-    SERVICEs.HttpService
+    SERVICEs.HttpService,
+    SERVICEs.ImageService
   ],
   bootstrap: [AppComponent]
 })
