@@ -1,0 +1,26 @@
+<md-card class="example-card">
+
+  <md-card-header>
+    <div  *ngIf="avatarClass" [class]="avatarClass" md-card-avatar></div>
+    <md-card-title *ngIf="title">{{title}}</md-card-title>
+    <md-card-subtitle *ngIf="subtitle">{{subtitle}}</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-content>
+    <ng-content select="[body]"></ng-content>
+  </md-card-content>
+
+  <md-card-actions>
+    <ng-content select="[action]"></ng-content>
+  </md-card-actions>
+
+  <div *ngIf="loading" class="loading">
+    <md-progress-bar mode="indeterminate"></md-progress-bar>
+  </div>
+</md-card>
+
+
+
+
+
+

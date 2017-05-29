@@ -9,7 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import * as VIEWs from '../views';
 import * as SERVICEs from '../services';
-import { MainCardComponent } from '../components/mainCard.component';
+import { MainCardComponent } from '../components/MainCard/mainCard.component';
+import { UserCardComponent } from '../components/UserCard/userCard.component';
 
 const ROUTES = [
 
@@ -43,7 +44,8 @@ const ROUTES = [
     VIEWs.LoginComponent,
     VIEWs.MainComponent,
     VIEWs.UploadImageComponent,
-    MainCardComponent
+    MainCardComponent,
+    UserCardComponent
   ],
   imports: [
     BrowserModule,

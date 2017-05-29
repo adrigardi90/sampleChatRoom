@@ -31,4 +31,21 @@ export class HttpService {
 		});
 	}
 
+
+	uploadImage(user: any) :Observable<any>{
+
+		this.requestOptions = new RequestOptions({
+			method: RequestMethod.Post,
+			url: this.url + '/uploadProfile',
+			headers: this.headers,
+			body: JSON.stringify(user)
+		});
+
+		return this.http.request(new Request(this.requestOptions)).map( (response) => {
+			 return response.json();
+		}).catch( (err: Response | any) => {
+			 return Observable.throw(err.json().error || 'Server error');
+		});
+	}
+
 }

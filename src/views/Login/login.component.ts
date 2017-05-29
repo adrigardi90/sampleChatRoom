@@ -14,17 +14,19 @@ export class LoginComponent {
 
 	constructor(private router: Router,
 				private http: SERVICEs.HttpService){
-		this.user = {};
+		this.user = {imgProfile:'', nickName: '', email: ''};
 	}
 
 	login(){
 		this.loading = true;
 		this.http.login(this.user).subscribe( (res) => {
 			console.log(res)
+			this.loading = false;
 			sessionStorage.setItem('logged', JSON.stringify(this.user));
-			this.router.navigate(['/mainRoom']);
+			this.router.navigate(['/upload']);
 		}, (err) => {
-
+			alert("usuario ya logado");
+			this.loading = false;
 		});
 
 		
