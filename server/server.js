@@ -33,8 +33,10 @@ io.on('connection', (socket) => {
 
 	console.log("user connected")
 
-	socket.on('new-user', (name) => {
-		console.log("usuario conectado", name)
+	socket.on('new-user', (user) => {
+		console.log("usuario conectado");
+		console.log("apiiii", api.users)
+		io.sockets.emit('new-user', api.users);
 	});
 
 	socket.on('new-message', (obj) => {

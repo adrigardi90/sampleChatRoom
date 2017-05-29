@@ -45,3 +45,4 @@ router.post('/uploadProfile', (req, res) => {
 
 
 module.exports = router;
+module.exports.users = users;

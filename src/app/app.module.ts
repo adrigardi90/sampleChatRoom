@@ -57,8 +57,7 @@ const ROUTES = [
   ],
   providers: [
     SERVICEs.SocketConnectionService,
-    SERVICEs.HttpService,
-    SERVICEs.ImageService
+    SERVICEs.HttpService
   ],
   bootstrap: [AppComponent]
 })
