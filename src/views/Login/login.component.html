@@ -1,0 +1,55 @@
+<md-card class="example-card">
+
+
+  <md-card-header>
+  	<div md-card-avatar class="chat-image"></div>
+    <md-card-title>Log In to Free Chat Room</md-card-title>
+    <md-card-subtitle>Go to Chat</md-card-subtitle>
+  </md-card-header>
+  <md-card-content>
+
+  <form>
+  	<table  cellspacing="0">
+  		<tr>
+    		<td>
+    			<md-input-container class="full-input">
+					<input 
+						mdInput 
+						placeholder="Nickname" 
+						name="nickname"
+						[(ngModel)]="user.nickName">
+				</md-input-container>
+			</td>		
+    	</tr>
+    	<tr>
+    		<td>
+    			<md-input-container class="full-input">
+					<input 
+						mdInput 
+						placeholder="Email" 
+						name="email"
+						[(ngModel)]="user.email">
+				</md-input-container>
+			</td>
+ 		 </tr>
+	</table>
+  </form>
+
+  </md-card-content>
+  	<md-card-actions>
+    	<button 
+    		md-raised-button 
+    		class="button-login"
+    		(click)='login()'>GO CHAT</button>
+  	</md-card-actions>
+
+  	<div *ngIf="loading" class="loading">
+		<md-progress-bar mode="indeterminate"></md-progress-bar>
+	</div>
+</md-card>
+
+
+
+
+
+

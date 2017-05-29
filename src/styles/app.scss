@@ -1,0 +1,65 @@
+/* You can add global styles to this file, and also import other style files */
+
+html{
+	background-color: #f0f4f5;
+}
+
+md-card {
+
+	margin: 0 auto;
+	height: 280px;
+    margin-top: 12%;
+    padding: 35px !important;
+    width: 28%;
+
+	& >:first-child {
+    	margin-top: 15px !important;
+	}
+	& .chat-image {
+	  	background-image: url('../images/chat.png');
+	  	background-size: cover;
+	}
+
+	& .mat-card-avatar {
+    	height: 50px !important;
+    	width: 60px !important;
+    }
+	& .mat-card-title {
+    	font-size: 18px !important;
+	}
+
+	& .mat-card-content{
+
+		margin-top: 25px;
+
+		& table {
+		
+			width: 100%;
+	    	text-align: center;
+
+		    & .full-input {
+		    	width: 100%;
+		    }
+		}
+	}
+	
+	& .mat-card-actions {
+		margin: 0;
+		width: 100%;
+
+		& .button-login{
+			background-color: #4285f4;
+			color: white;
+			float: right;
+		}
+	}
+
+	& .loading {
+		    margin-top: 71px;
+	}
+}
+
+.mat-progress-bar-fill::after {
+    background-color: #4285f4;
+}
+
