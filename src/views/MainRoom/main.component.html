@@ -1,23 +1,90 @@
-<h1>
-  CHATROOM
-</h1>
+<div [@ani2] class="full-height">
 
-<ul>
-	<li *ngFor="let user of listUsers">
-		<user-card
-			[nickName]="user.nickName"
-			[email]="user.email"
-			[imgSrc]=" user.imgProfile != '' ? user.imgProfile: '../../assets/undefined.png'">
+	<md-toolbar color="primary" style="height: 60px; ">
+	  <md-toolbar-row style="height: 60px; ">
+	    <span>Welcome to Free ChatRoom</span>
+	    <span class="example-spacer"></span>
+	    <md-icon class="pointer"
+	    	mdTooltip="Salir del chat"
+	    	mdTooltipPosition="left"
+	    	(click)="logOut()">directions_run</md-icon>
+	  </md-toolbar-row>
+	</md-toolbar>
 
-		</user-card>
-	</li>
-</ul>
+	<div class="column" 
+		style="height:90%" 
+		id="bodyRoom" 
+		[@ani1]>
+
+		<div class="column" 
+			class="flex-container"  
+    		fxLayoutAlign="center center"
+    		style="width:40%">
+
+			<div>
+				<li style="display:flex">
+					<button 
+						md-mini-fab
+						[disabled] ="upDisabled()"
+						(click)="upUser()"><md-icon>keyboard_arrow_up</md-icon></button>
+				</li>
+
+				<li style="display:flex">
+					<button 
+						md-mini-fab
+						[disabled] ="downDisabled()"
+						(click)="downUser()"><md-icon>keyboard_arrow_down</md-icon></button>
+				</li>
+			</div>
+
+			<div class="user-container">
+				<ul class="listUsers">
+					<li *ngFor="let user of listUsersCopy">
+						<user-card
+							[nickName]="user.nickName"
+							[email]="user.email"
+							[imgSrc]=" user.imgProfile != '' ? user.imgProfile: '../../assets/undefined.png'"
+							style="width:90%">
+						</user-card>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div  style="width:75%" 
+			class="flex-container"  
+    		fxLayoutAlign="center center" 
+    		fxLayout="column">
+
+			<div class="full-width">
+				<textarea 
+				[(ngModel)]="chatMessages"
+				rows="20"
+				style="width:90%"
+				disabled="disabled"> </textarea>
+			</div>
+
+			<div class="full-width"> 
+				<textarea 
+				[(ngModel)]="message"
+				(keyup.enter)="sendMessage()"
+				rows="4"
+				style="width:90%"></textarea>
+			</div>
+
+			<div class="full-width">
+				<div style="width:95%">
+					<button (click)='sendMessage()'
+							style="float: right;">Send
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
 
 
-<textarea [(ngModel)]="chatMessages"> </textarea>
-<textarea [(ngModel)]="message"></textarea>
-<button (click)='sendMessage()'>Send</button>
-<button (click)='goOut()'>Go out</button>
 
 
 

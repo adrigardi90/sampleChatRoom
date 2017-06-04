@@ -1,10 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as SERVICEs from './../../services';
+import * as ANI from './../../animations/login';
 
 
 @Component({
-  templateUrl: './uploadImage.component.html'
+  templateUrl: './uploadImage.component.html',
+  animations: [ANI.firstAnimation(200, 'translateX(-100%)', 'translateX(100%)')]
 })
 export class UploadImageComponent {
 

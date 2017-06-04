@@ -1,36 +1,38 @@
+<div [@ani1] 
+    class="flex-container"  
+    fxLayoutAlign="center center" 
+    class="full-height">
 
-<main-card
-  title="Upload your profile image"
-  subtitle="Select image"
-  [loading]="loading">
+  <main-card
+    title="Upload your profile image"
+    subtitle="Select image"
+    [loading]="loading">
 
- <div body>
-    <figure>
-      <img #inputImage
-        [src]="base64textString != '' ? base64textString : imgSrc">
-       <figcaption 
-          class="pointer"
-          (click)="uploadImg()">Pulsa para cambiar imagen.</figcaption>
-    </figure>
+   <div body>
+      <figure>
+        <img #inputImage
+          [src]="base64textString != '' ? base64textString : imgSrc">
+         <figcaption 
+            class="pointer"
+            (click)="uploadImg()">Pulsa para cambiar imagen.</figcaption>
+      </figure>
 
-    <input type="file"
-        id="myFile" 
-        name="myFile"
-        [hidden]="true"
-        (change)="onFileChange($event)"
-        accept="image/*"
-        #inputfile />
+      <input type="file"
+          id="myFile" 
+          name="myFile"
+          [hidden]="true"
+          (change)="onFileChange($event)"
+          accept="image/*"
+          #inputfile />
+    </div>
 
-  </div>
-
-
-  <button 
-        md-raised-button 
-        class="button-login"
-        (click)='enter()'
-        action>ENTER</button>
-
-</main-card>
+    <button 
+          md-raised-button 
+          class="button-login"
+          (click)='enter()'
+          action>ENTER</button>
+  </main-card>
+</div>
 
 
 

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import * as VIEWs from '../views';
@@ -16,7 +17,7 @@ const ROUTES = [
 
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -30,10 +31,6 @@ const ROUTES = [
   {
     path: 'mainRoom',
     component: VIEWs.MainComponent
-  },
-  {
-    path: '**',
-    component: VIEWs.LoginComponent
   }
 ];
 
@@ -52,6 +49,7 @@ const ROUTES = [
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    FlexLayoutModule,
     MaterialModule.forRoot(),
     RouterModule.forRoot(ROUTES) // Add routes to the app
   ],

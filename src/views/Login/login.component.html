@@ -1,96 +1,51 @@
-<md-card class="example-card">
+<div [@ani1] 
+    class="flex-container"  
+    fxLayoutAlign="center center" 
+    style="height: 100%">
+  
+  <main-card
+    id="main-card"
+    avatarClass="chat_image"
+    title="Log In to Free Chat Room"
+    subtitle="Enter the info"
+    [loading]="loading"
+    imgSrc="./../../assets/chat.png"
+    >
 
-
-  <md-card-header>
-  	<div md-card-avatar class="chat-image"></div>
-    <md-card-title>Log In to Free Chat Room</md-card-title>
-    <md-card-subtitle>Go to Chat</md-card-subtitle>
-  </md-card-header>
-
-  <md-card-content>
-
-    <form>
-    	<table  cellspacing="0">
-    		<tr>
-      		<td>
-      			<md-input-container class="full-input">
-  					<input 
-  						mdInput 
-  						placeholder="Nickname" 
-  						name="nickname"
-  						[(ngModel)]="user.nickName">
-  				</md-input-container>
-  			</td>		
-      	</tr>
-      	<tr>
-      		<td>
-      			<md-input-container class="full-input">
-  					<input 
-  						mdInput 
-  						placeholder="Email" 
-  						name="email"
-  						[(ngModel)]="user.email">
-  				</md-input-container>
-  			</td>
-   		 </tr>
-  	 </table>
+    <form body>
+      <table  cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container class="full-input">
+            <input 
+              mdInput 
+              placeholder="Nickname" 
+              name="nickname"
+              [(ngModel)]="user.nickName">
+          </md-input-container>
+        </td>   
+        </tr>
+        <tr>
+          <td>
+            <md-input-container class="full-input">
+            <input 
+              mdInput 
+              placeholder="Email" 
+              name="email"
+              [(ngModel)]="user.email">
+          </md-input-container>
+        </td>
+       </tr>
+    </table>
     </form>
 
-  </md-card-content>
-
-	<md-card-actions>
-  	<button 
-  		md-raised-button 
-  		class="button-login"
-  		(click)='login()'>NEXT</button>
-	</md-card-actions>
-
-  	<div *ngIf="loading" class="loading">
-		<md-progress-bar mode="indeterminate"></md-progress-bar>
-	</div>
-
-</md-card>
-
-<main-card
-  avatarClass="chat_image"
-  title="Log In to Free Chat Room"
-  subtitle="Go to Chat"
-  [loading]="loading">
-
-  <form body>
-    <table  cellspacing="0">
-      <tr>
-        <td>
-          <md-input-container class="full-input">
-          <input 
-            mdInput 
-            placeholder="Nickname" 
-            name="nickname"
-            [(ngModel)]="user.nickName">
-        </md-input-container>
-      </td>   
-      </tr>
-      <tr>
-        <td>
-          <md-input-container class="full-input">
-          <input 
-            mdInput 
-            placeholder="Email" 
-            name="email"
-            [(ngModel)]="user.email">
-        </md-input-container>
-      </td>
-     </tr>
-  </table>
-  </form>
-
-  <button action
-        md-raised-button 
-        class="button-login"
-        (click)='login()'
-        >GO CHAT</button>
-        
-</main-card>
+    <button action
+          md-raised-button 
+          class="button-login"
+          (click)='login()'>NEXT</button>
+          
+  </main-card>
+</div>
 
 
 

@@ -1,7 +1,8 @@
-<md-card class="example-card">
+<md-card class="login-card" >
 
   <md-card-header>
-    <div  *ngIf="avatarClass" [class]="avatarClass" md-card-avatar></div>
+    <div  *ngIf="imgSrc"  md-card-avatar> <img [src]="imgSrc" style="    width: 60px;
+    height: 50px"></div>
     <md-card-title *ngIf="title">{{title}}</md-card-title>
     <md-card-subtitle *ngIf="subtitle">{{subtitle}}</md-card-subtitle>
   </md-card-header>
