@@ -25,14 +25,14 @@
 				<li style="display:flex">
 					<button 
 						md-mini-fab
-						[disabled] ="upDisabled()"
+						[disabled] ="!(this.listUsers?.length >= this.downIndex && this.upIndex > 0)"
 						(click)="upUser()"><md-icon>keyboard_arrow_up</md-icon></button>
 				</li>
 
 				<li style="display:flex">
 					<button 
 						md-mini-fab
-						[disabled] ="downDisabled()"
+						[disabled] ="this.listUsers?.length <= this.downIndex"
 						(click)="downUser()"><md-icon>keyboard_arrow_down</md-icon></button>
 				</li>
 			</div>

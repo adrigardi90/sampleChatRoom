@@ -34,8 +34,12 @@ io.on('connection', (socket) => {
 	console.log("user connected")
 
 	socket.on('new-user', (user) => {
-		console.log("usuario conectado");
-		console.log("apiiii", api.users)
+		console.log("Usuario conectado");
+		io.sockets.emit('new-user', api.users);
+	});
+
+	socket.on('disconnect', (user) => {
+		console.log("Usuario desconectado");
 		io.sockets.emit('new-user', api.users);
 	});
 

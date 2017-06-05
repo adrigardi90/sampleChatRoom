@@ -15,11 +15,11 @@ export class HttpService {
 
 	constructor(private http: Http){}
 
-	login(user: any) : Observable<any>{
+	request(user: any, url: string) : Observable<any>{
 
 		this.requestOptions = new RequestOptions({
 			method: RequestMethod.Post,
-			url: this.url + '/login',
+			url: this.url + url,
 			headers: this.headers,
 			body: JSON.stringify(user)
 		});
@@ -32,7 +32,7 @@ export class HttpService {
 	}
 
 
-	uploadImage(user: any) :Observable<any>{
+/*	uploadImage(user: any) :Observable<any>{
 
 		this.requestOptions = new RequestOptions({
 			method: RequestMethod.Post,
@@ -46,6 +46,6 @@ export class HttpService {
 		}).catch( (err: Response | any) => {
 			 return Observable.throw(err.json().error || 'Server error');
 		});
-	}
+	}*/
 
 }

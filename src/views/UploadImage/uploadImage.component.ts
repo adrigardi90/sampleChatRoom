@@ -6,7 +6,7 @@ import * as ANI from './../../animations/login';
 
 @Component({
   templateUrl: './uploadImage.component.html',
-  animations: [ANI.firstAnimation(200, 'translateX(-100%)', 'translateX(100%)')]
+  animations: [ANI.firstAnimation(500, 'translateX(-100%)', 'translateX(100%)')]
 })
 export class UploadImageComponent {
 
@@ -24,6 +24,7 @@ export class UploadImageComponent {
 		this.imgSrc = "./../../assets/undefined.png";
 		this.file = new Object();
 		this.userLogged = JSON.parse(sessionStorage.getItem('logged'));
+		console.log(this.userLogged)
 	}
 
 	uploadImg(){
@@ -64,7 +65,7 @@ export class UploadImageComponent {
 
 	  		this.userLogged.imgProfile = this.base64textString;
 
-	  		this.http.uploadImage(this.userLogged).subscribe( (res) => {
+	  		this.http.request(this.userLogged, '/uploadProfile').subscribe( (res) => {
 	  			
 		  		sessionStorage.setItem('logged', JSON.stringify(this.userLogged));
 		  		this.router.navigate(['/mainRoom']);

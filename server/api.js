@@ -42,6 +42,26 @@ router.post('/uploadProfile', (req, res) => {
 
 });
 
+router.post('/logout', (req, res) => {
+
+	var find = false;
+	var pos;
+
+	for(var a = 0; a < users.length; a++){
+		if(users[a].email == req.body.email){
+			find = true;
+			pos = a; 
+			break;
+		}
+	}
+
+	if(find){
+		users.splice(pos,1);
+		res.status(200).send({message: "Log out"});
+	}else {
+		res.status(403).send({message:"The user is not logged"});
+	}
+})
 
 
 module.exports = router;

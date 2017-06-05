@@ -20,8 +20,8 @@ export class LoginComponent {
 	}
 
 	login(){
-	/*	this.loading = true;
-		this.http.login(this.user).subscribe( (res) => {
+		this.loading = true;
+		this.http.request(this.user, '/login').subscribe( (res) => {
 			console.log(res)
 			this.loading = false;
 			sessionStorage.setItem('logged', JSON.stringify(this.user));
@@ -30,9 +30,9 @@ export class LoginComponent {
 			alert("usuario ya logado");
 			this.loading = false;
 		});
-*/
 
-this.router.navigate(['/upload']);
+/*sessionStorage.setItem('logged', JSON.stringify(this.user));
+this.router.navigate(['/upload']);*/
 		
 	}
 }

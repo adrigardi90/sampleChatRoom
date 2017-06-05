@@ -1,12 +1,12 @@
 import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import * as io from 'socket.io-client';
-import { SocketConnectionService } from './../../services/socketConnection.service';
+import * as SERVICEs from './../../services';
 import * as ANI from './../../animations/login';
 
 @Component({
   templateUrl : './main.component.html',
-  providers : [SocketConnectionService],
+  providers : [SERVICEs.SocketConnectionService],
   animations: [ANI.secondAnimation('1s', 0, 1),
                ANI.firstAnimation(800, 'translateY(-100%)', 'translateY(100%)')]
 })
@@ -15,7 +15,7 @@ export class MainComponent implements OnInit{
   private userLogged;
   private message : string = '';
   private chatMessages : string = '';
-  private listUsers : any = [{nickName:'1', email: 'adriddddddddddddddddddd@hotmail.com', imgProfile:''},
+/*  private listUsers : any = [{nickName:'1', email: 'adriddddddddddddddddddd@hotmail.com', imgProfile:''},
   {nickName:'2', email: 'adri@hotmail.com', imgProfile:''},
   {nickName:'3', email: 'adri@hotmail.com', imgProfile:''},
   {nickName:'4', email: 'adri@hotmail.com', imgProfile:''},
@@ -35,15 +35,22 @@ export class MainComponent implements OnInit{
   {nickName:'7', email: 'adri@hotmail.com', imgProfile:''},
   {nickName:'pepito', email: 'adri@hotmail.com', imgProfile:''},
   {nickName:'pepito', email: 'adri@hotmail.com', imgProfile:''},
-  {nickName:'pepito', email: 'adri@hotmail.com', imgProfile:''}];
+  {nickName:'pepito', email: 'adri@hotmail.com', imgProfile:''}];*/
 
   private upIndex:number = 0;
-  private downIndex:number = 5;
+  private downIndex:number;
+
+  private listUsers : any ;
+  private listUsersCopy: any ;
 
 
 	
-  constructor(private channel: SocketConnectionService){
+  constructor(private channel: SERVICEs.SocketConnectionService,
+              private http: SERVICEs.HttpService,
+              private router: Router,){
+
     this.userLogged = JSON.parse(sessionStorage.getItem('logged'));
+    this.downIndex = Math.floor((window.innerHeight - 200) / 65);
     this.channel.connect();
     this.channel.getMessage('message').subscribe( (data) => {
       let userView;
@@ -54,13 +61,11 @@ export class MainComponent implements OnInit{
     });
 
     this.channel.getMessage('new-user').subscribe( (users) => {
-      console.log(users)
       this.listUsers = users;
-      this.listUsersCopy = this.listUsers.splice(0,9);
+      this.listUsersCopy = this.listUsers.slice(0,this.downIndex);
     });
 
-    //console.log(Math.floor((window.innerHeight - 132) / 65));
-    this.listUsersCopy = this.listUsers.slice(0,5);
+    //this.listUsersCopy = this.listUsers.slice(0,this.downIndex);
   }
 
   ngOnInit(){
@@ -75,7 +80,15 @@ export class MainComponent implements OnInit{
 
   logOut(){
     console.log("out")
-    //this.channel.disconnect();
+      this.http.request(this.userLogged, '/logout').subscribe( (res) => {
+        this.channel.sendMessage('disconnect', JSON.stringify(this.userLogged));
+        this.channel.disconnect();
+        sessionStorage.removeItem('logged');
+        this.router.navigate(['login']);
+      }, (err) => {
+        alert("Error");
+      });
+    
   }
 
   parseObj(data:any){
@@ -94,11 +107,11 @@ export class MainComponent implements OnInit{
     this.listUsersCopy= this.listUsers.slice(this.upIndex, this.downIndex )
   }
 
-  upDisabled(): boolean {
-    return !(this.listUsers.length > 5 && this.upIndex > 0);
+  /*upDisabled(): boolean {
+    return !(this.listUsers.length >= this.downIndex && this.upIndex > 0);
   }
 
   downDisabled(): boolean {
-    return this.listUsers.length > 5 && this.downIndex == this.listUsers.length;
-  }
+    return this.listUsers.length <= this.downIndex;
+  }*/
 }
