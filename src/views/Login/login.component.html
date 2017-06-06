@@ -12,7 +12,7 @@
     imgSrc="./../../assets/chat.png"
     >
 
-    <form body>
+    <form body #theForm="ngForm" (ngSubmit)="login()">
       <table  cellspacing="0">
         <tr>
           <td>
@@ -21,7 +21,9 @@
               mdInput 
               placeholder="Nickname" 
               name="nickname"
-              [(ngModel)]="user.nickName">
+              [(ngModel)]="user.nickName"
+              autocomplete="off"
+              required="required">
           </md-input-container>
         </td>   
         </tr>
@@ -32,7 +34,10 @@
               mdInput 
               placeholder="Email" 
               name="email"
-              [(ngModel)]="user.email">
+              type="email"
+              [(ngModel)]="user.email"
+              autocomplete="off"
+              required="required">
           </md-input-container>
         </td>
        </tr>
@@ -42,7 +47,8 @@
     <button action
           md-raised-button 
           class="button-login"
-          (click)='login()'>NEXT</button>
+          [class.disabled] = "!theForm.valid"
+         >NEXT</button>
           
   </main-card>
 </div>

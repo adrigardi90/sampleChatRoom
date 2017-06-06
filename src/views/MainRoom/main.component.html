@@ -57,11 +57,16 @@
     		fxLayout="column">
 
 			<div class="full-width">
-				<textarea 
-				[(ngModel)]="chatMessages"
-				rows="20"
-				style="width:90%"
-				disabled="disabled"> </textarea>
+				<div class="chatArea">
+					<ul>
+						<li *ngFor="let line of chatLines">
+							<div [class]="line.user == 'yo' ? ' text_chat ownMessage' : ' text_chat otherMessage'">
+								{{line.message}}
+							</div>
+						</li>
+
+					</ul>
+				</div>
 			</div>
 
 			<div class="full-width"> 

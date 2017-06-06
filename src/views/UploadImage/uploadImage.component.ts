@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import * as SERVICEs from './../../services';
-import * as ANI from './../../animations/login';
-
+import * as ANI from './../../animations/animation';
 
 @Component({
   templateUrl: './uploadImage.component.html',
@@ -21,10 +20,10 @@ export class UploadImageComponent {
 
 	constructor(private http: SERVICEs.HttpService,
 				private router: Router){
+		//Default image
 		this.imgSrc = "./../../assets/undefined.png";
 		this.file = new Object();
 		this.userLogged = JSON.parse(sessionStorage.getItem('logged'));
-		console.log(this.userLogged)
 	}
 
 	uploadImg(){
@@ -33,32 +32,20 @@ export class UploadImageComponent {
 	}
 
 	onFileChange(event) {
-	    this.file = event.target.files[0];
-	    this.fileName = this.file.name;
+		//Obtain the upload file
+		this.file = event.target.files[0];
+		this.fileName = this.file.name;
 
-	   // let valid = this.validFormat();
+		let fr = new FileReader();
+		fr.onload = this._load.bind(this);
+		fr.readAsBinaryString(this.file);
 
-	    //if(valid) {
-	      
-
-	      let fr = new FileReader();
-
-	      fr.onload = this._load.bind(this);
-
-	      //fr.readAsDataURL(this.file);
-	      fr.readAsBinaryString(this.file);
-	    //} else {
-	    //  this.snackBar.openSnackBar('Formato de imagen no válido','OK', 3000);
-	    //}
 	  }
 
 	  _load(event){
-	  		//image.src = fr.result;
 	  		let image: any = this.inputImage.nativeElement;
 	        var binaryString = event.target.result;
             this.base64textString= 'data:image/png;base64,' + btoa(binaryString)
-            console.log(btoa(binaryString));
-            //image.src = this.base64textString;
 	  }
 
 	  enter(){
@@ -66,7 +53,6 @@ export class UploadImageComponent {
 	  		this.userLogged.imgProfile = this.base64textString;
 
 	  		this.http.request(this.userLogged, '/uploadProfile').subscribe( (res) => {
-	  			
 		  		sessionStorage.setItem('logged', JSON.stringify(this.userLogged));
 		  		this.router.navigate(['/mainRoom']);
 	  		}, (err) => {
