@@ -30,16 +30,18 @@ export class MainComponent implements OnInit{
       this.downIndex = Math.floor((window.innerHeight - 200) / 65);
       this.channel.connect();
 
+      //Listening to new messages
       this.channel.getMessage('message').subscribe( (data) => {
         this.cleanChat();
         let userView;
         let line;
         let obj = this.parseObj(data);
         obj[0].email == this.userLogged.email ? userView = 'yo' : userView = obj[0].nickName;
-        userView != 'yo' ? line = userView.toUpperCase() +': ' + obj[1].message : line = obj[1].message
+        userView != 'yo' ? line = userView.toUpperCase() +': ' + obj[1].message : line = obj[1].message;
         this.chatLines.push({message: line, user: userView});
     });
 
+      //Listening to new users
       this.channel.getMessage('new-user').subscribe( (users) => {
         this.listUsers = users;
         this.listUsersCopy = this.listUsers.slice(0,this.downIndex);
@@ -47,11 +49,11 @@ export class MainComponent implements OnInit{
   }
 
   ngOnInit(){
+    //New user message when the state is loaded
    this.channel.sendMessage('new-user', JSON.stringify(this.userLogged));
   }
 
   sendMessage(){
-
     if(this.message != ''){
       let messageObj = [this.userLogged, {message: this.message}];
       this.channel.sendMessage('new-message', JSON.stringify(messageObj));
@@ -60,15 +62,16 @@ export class MainComponent implements OnInit{
   }
 
   logOut(){
-
-      this.http.request(this.userLogged, '/logout').subscribe( (res) => {
+      this.http.request(this.userLogged, '/logout').subscribe( 
+        (res) => {
           this.channel.sendMessage('disconnect', JSON.stringify(this.userLogged));
           this.channel.disconnect();
           sessionStorage.removeItem('logged');
         this.router.navigate(['login']);
-      }, (err) => {
-          alert("Error");
-      });
+        }, (err) => {
+          alert("Error ");
+        }
+      );
   }
 
   parseObj(data:any){

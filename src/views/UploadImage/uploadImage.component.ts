@@ -9,9 +9,9 @@ import * as ANI from './../../animations/animation';
 })
 export class UploadImageComponent {
 
-	private imgSrc: string;
 	@ViewChild('inputfile') input: any;
 	@ViewChild('inputImage') inputImage: any;
+	private imgSrc: string;
 	private file: any;
 	private fileName: string = '';
 	private base64textString:string='';
@@ -35,30 +35,33 @@ export class UploadImageComponent {
 		//Obtain the upload file
 		this.file = event.target.files[0];
 		this.fileName = this.file.name;
-
+		
 		let fr = new FileReader();
 		fr.onload = this._load.bind(this);
 		fr.readAsBinaryString(this.file);
 
 	  }
 
-	  _load(event){
-	  		let image: any = this.inputImage.nativeElement;
-	        var binaryString = event.target.result;
-            this.base64textString= 'data:image/png;base64,' + btoa(binaryString)
-	  }
+	_load(event){
+  		let image: any = this.inputImage.nativeElement;
+        var binaryString = event.target.result;
+        //image to base64
+        this.base64textString= 'data:image/png;base64,' + btoa(binaryString)
+	}
 
-	  enter(){
+	enter(){
 
-	  		this.userLogged.imgProfile = this.base64textString;
+		this.userLogged.imgProfile = this.base64textString;
 
-	  		this.http.request(this.userLogged, '/uploadProfile').subscribe( (res) => {
+		this.http.request(this.userLogged, '/uploadProfile').subscribe( 
+			(res) => {
 		  		sessionStorage.setItem('logged', JSON.stringify(this.userLogged));
 		  		this.router.navigate(['/mainRoom']);
-	  		}, (err) => {
-	  			//sessionStorage.removeItem('logged');
-	  			this.router.navigate(['/login']);
-	  		});
-	  		
-	  }
+			}, (err) => {
+				alert("Debes logarte para poder acceder a la sala de chat");
+				this.router.navigate(['/login']);
+			}
+		);
+	
+	}
 }

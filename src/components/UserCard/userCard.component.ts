@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'user-card',
@@ -10,13 +10,11 @@ import { Component, Input, OnInit } from '@angular/core';
 			  </md-card-header>
 			</md-card>`
 })
-export class UserCardComponent implements OnInit {
+export class UserCardComponent{
 
 	@Input() nickName: string;
 	@Input() email: string;
 	@Input() imgSrc: string;
 
 	constructor(){}
-
-	ngOnInit(){}
 }

@@ -10,10 +10,12 @@ export class SocketConnectionService {
 	private socket;
 
 	connect(){
+		//Open socket connection
 		this.socket = io(this.url);
 	}
 
 	sendMessage(type: string, message:string){
+		//Emit a message to socket
 		this.socket.emit(type, message);
 	}
 
@@ -21,6 +23,7 @@ export class SocketConnectionService {
 		
 		let data = new Observable( (observer) => {
 
+			//We are listening to the emited messages
 			this.socket.on(type, (message) =>{
 				observer.next(message);
 			})

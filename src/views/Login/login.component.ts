@@ -14,18 +14,25 @@ export class LoginComponent {
 
 	constructor(private router: Router,
 				private http: SERVICEs.HttpService){
-		this.user = {imgProfile:'', nickName: '', email: ''};
+
+		this.user = {
+			imgProfile:'', 
+			nickName: '', 
+			email: ''
+		};
 	}
 
 	login(){
 		this.loading = true;
-		this.http.request(this.user, '/login').subscribe( (res) => {
-			this.loading = false;
-			sessionStorage.setItem('logged', JSON.stringify(this.user));
-			this.router.navigate(['upload']);
-		}, (err) => {
-			alert("El usuario con email " + this.user.email + " ya está logado");
-			this.loading = false;
-		});	
+		this.http.request(this.user, '/login').subscribe( 
+			(res) => {
+				this.loading = false;
+				sessionStorage.setItem('logged', JSON.stringify(this.user));
+				this.router.navigate(['upload']);
+			}, (err) => {
+				alert("El usuario con email " + this.user.email + " ya está logado");
+				this.loading = false;
+			}
+		);	
 	}
 }
