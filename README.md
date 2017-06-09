@@ -2,6 +2,8 @@
   <img src="src/assets/A2_node.pnge.png" alt="Sample Angular Room Chat" width="500" height="300"/>
 </p>
 
+![](src/assets/A2_node.pnge.png?raw=true)
+
 # sampleChatRoom
 > Sample Chat Room using sockets API with Node.js and Angular 2. 
 
