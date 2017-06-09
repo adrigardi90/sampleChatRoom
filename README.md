@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="215" height="337"/>
+  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="215" height="300"/>
 </p>
 
 # sampleChatRoom
