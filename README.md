@@ -1,8 +1,6 @@
 <p align="center">
-  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="315" height="437"/>
+  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="215" height="337"/>
 </p>
-
-![text](./src/assets/A2_node.pnge.png?raw=true)
 
 # sampleChatRoom
 > Sample Chat Room using sockets API with Node.js and Angular 2. 
