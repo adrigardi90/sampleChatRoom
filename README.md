@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="500" height="300"/>
+  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/A2_node.png" alt="Sample Angular Room Chat" width="415" height="537"/>
 </p>
 
 ![text](./src/assets/A2_node.pnge.png?raw=true)
