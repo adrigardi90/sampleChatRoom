@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/assets/A2_node.pnge.png" alt="Sample Angular Room Chat" width="500" height="300"/>
+  <img src="src/assets/A2_node.pnge.png" alt="Sample Angular Room Chat" width="500" height="300"/>
 </p>
 
 # sampleChatRoom
