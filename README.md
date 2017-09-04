@@ -28,5 +28,5 @@ Each browser windows let you login again in the chat with another email.
 If you want to leave from chat, click on logout button in order to delete your email from connected user list
 
 <p align="center">
-  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/screenshot.png" alt="ChatRoom" width="3338" height="1994"/>
+  <img src="https://github.com/adrigardi90/sampleChatRoom/blob/master/src/assets/screenshot.png" alt="ChatRoom" width="833" height="499"/>
 </p>
