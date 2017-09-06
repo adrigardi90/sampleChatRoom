@@ -3,7 +3,7 @@
 </p>
 
 # sampleChatRoom
-> Sample Chat Room using sockets API with [Node.js](https://nodejs.org/es/) and [Angular 2](https://angular.io/) 
+> Sample Chat Room using [sockets API](https://socket.io/docs/) with [Node.js](https://nodejs.org/es/) and [Angular 2](https://angular.io/) 
 
 ## Quick start
 
